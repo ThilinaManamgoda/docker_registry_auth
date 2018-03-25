@@ -1,0 +1,25 @@
+# A simple example. See reference.yml for explanation for explanation of all options.
+#
+#  auth:
+#    token:
+#      realm: "https://127.0.0.1:5001/auth"
+#      service: "Docker registry"
+#      issuer: "Acme auth server"
+#      rootcertbundle: "/path/to/server.pem"
+
+server:
+  addr: ":5001"
+  certificate: "/ssl/"
+  key: "/ssl/"
+
+token:
+  issuer: "Auth Service"  # Must match issuer in the Registry config.
+  expiration: 900
+
+ext_auth:
+  command: "/extensions/authentication"  # Can be a relative path too; $PATH works.
+  args: [""]
+
+ext_authz:
+  command: "/extensions/authorization"
+  args: [""]
