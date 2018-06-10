@@ -9,12 +9,18 @@
 
 server:
   addr: ":5001"
-  certificate: "/ssl/"
-  key: "/ssl/"
+  certificate: "/ssl/domain.crt"
+  key: "/ssl/domain.key"
 
 token:
   issuer: "Auth Service"  # Must match issuer in the Registry config.
   expiration: 900
+
+acl:
+  # This will allow authenticated users to pull/push
+  - match:
+      account: "admin"
+    actions: ['push']
 
 ext_auth:
   command: "/extensions/authentication"  # Can be a relative path too; $PATH works.
